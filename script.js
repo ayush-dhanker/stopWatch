@@ -1,5 +1,10 @@
 "use strict";
 
+const bttn1El = document.querySelector(".bttn1");
+const bttn2El = document.querySelector(".bttn2");
+const bttn3El = document.querySelector(".bttn3");
+bttn2El.classList.add("clicked");
+
 //Declring variables
 let second,
   displaySecond,
@@ -58,20 +63,29 @@ function stopwatch() {
   ).innerHTML = `${displayHour}:${displayMinute}:${displaySecond}`;
 }
 
-document.querySelector(".bttn1").addEventListener("click", function () {
+bttn1El.addEventListener("click", function () {
   if (state) {
     interval = window.setInterval(stopwatch, 1000);
     state = false;
+    bttn1El.classList.add("clicked");
+    bttn3El.classList.remove("clicked");
+    bttn2El.classList.remove("clicked");
   }
 });
 
-document.querySelector(".bttn3").addEventListener("click", function () {
+bttn3El.addEventListener("click", function () {
   window.clearInterval(interval);
   state = true;
+  bttn3El.classList.add("clicked");
+  bttn1El.classList.remove("clicked");
+  bttn2El.classList.remove("clicked");
 });
 
-document.querySelector(".bttn2").addEventListener("click", function () {
+bttn2El.addEventListener("click", function () {
   window.clearInterval(interval);
   initializing();
   document.getElementById("timer").innerHTML = `00:00:00`;
+  bttn1El.classList.remove("clicked");
+  bttn3El.classList.remove("clicked");
+  bttn2El.classList.add("clicked");
 });

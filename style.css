@@ -25,3 +25,9 @@ body {
   border: 4px double;
   cursor: pointer;
 }
+
+/* setting color of disabled button */
+.clicked {
+  color: grey;
+  border: 4px double grey;
+}
